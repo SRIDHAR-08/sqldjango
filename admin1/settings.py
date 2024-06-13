@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-mb)2b^wm8vr4r2djc&pd742r3_73zbn_8!d3d%8952_(j3#&jl
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -74,22 +74,22 @@ WSGI_APPLICATION = 'admin1.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
-
-# import environ
-
-# env = environ.Env()
-# environ.Env.read_env()
-
-# import dj_database_url
 # DATABASES = {
-#     'default': dj_database_url.parse(env('DATABASE_URL'))
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
 # }
+
+import environ
+
+env = environ.Env()
+environ.Env.read_env()
+
+import dj_database_url
+DATABASES = {
+    'default': dj_database_url.parse(env('DATABASE_URL'))
+}
 
 
 
